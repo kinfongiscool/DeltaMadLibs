@@ -6,16 +6,14 @@
     <string name="switcher_button_text">Click here to enter words</string>
     <string name="second_text">Fill in answers below:</string>
     <string name="editText0">Nouns</string>
-    <string name="editText1">Noun</string>
-    <string name="editText2">Noun</string>
-    <string name="editText3">Nouns</string>
-    <string name="editText4">Noun</string>
-    <string name="editText5">Adjective</string>
-    <string name="editText6">Verb</string>
-    <string name="editText7">Number</string>
-    <string name="editText8">Adjective</string>
-    <string name="editText9">Noun(s)</string>
-    <string name="editText10">Verb</string>
-
+    <string name="editText1">Place</string>
+    <string name="editText2">Nouns</string>
+    <string name="editText3">Noun</string>
+    <string name="editText4">Adjective</string>
+    <string name="editText5">Present Tense Verb</string>
+    <string name="editText6">Number</string>
+    <string name="editText7">Adjective</string>
+    <string name="editText8">Noun(s)</string>
+    <string name="editText9">Present Tense Verb</string>
 
 </resources>

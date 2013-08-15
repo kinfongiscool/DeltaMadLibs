@@ -10,12 +10,14 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class MainActivity extends Activity {
 
     TextView mTextView;
     Button mSwitcherButton;
-    String myMadLib;
+    String myMadLib = "";
+    String[] data;
     ArrayList<String> gotList;
 
     @Override
@@ -25,23 +27,29 @@ public class MainActivity extends Activity {
 
         mTextView = (TextView)findViewById(R.id.storyText);
 
-        myMadLib = "Two BLANK, both alike in dignity,\n" +
-                "In fair BLANK, where we lay our scene,\n" +
-                "From ancient break to new mutiny,\n" +
-                "Where civil blood makes civil hands unclean.\n" +
-                "From forth the fatal loins of these two foes\n" +
-                "A pair of star-cross`d BLANK take their life;\n" +
-                "Whole misadventured piteous overthrows\n" +
-                "Do with their BLANK bury their parents` strife.\n" +
-                "The fearful passage of their BLANK love,\n" +
-                "And the continuance of their parents` rage,\n" +
-                "Which, but their children`s end, nought could BLANK ,\n" +
-                "Is now the BLANK hours` traffic of our stage;\n" +
-                "The which if you with BLANK BLANK attend,\n" +
-                "What here shall BLANK, our toil shall strive to mend.";
+        data = new String[]{"Two ", "BLANK", ", both alike in dignity,\nIn fair ", "BLANK", ", wh" +
+                "ere we lay our scene,\nFrom ancient break to new mutiny,\nWhere civil blood make" +
+                "s civil hands unclean.\nFrom forth the fatal loins of these two foes\nApair of s" +
+                "tar-cross`d ", "BLANK", " take their life;\nWhole misadventured piteous overthro" +
+                "ws\nDo with their ", "BLANK", " bury their parents` strife.\nThe fearful passage" +
+                " of their ", "BLANK", " love,\nAnd the continuance of their parents` rage,\nWhic" +
+                "h, but their children`s end, nought could ", "BLANK", " ,\nIs now the ", "BLANK",
+                " hours` traffic of our stage;\nThe which if you with ", "BLANK", " ", "BLANK", "" +
+                " attend,\nWhat here shall ", "BLANK", ", our toil shall strive to mend."};
 
         Intent intent = getIntent();
-        handleSentStuff(intent);
+        if (intent != null) {
+            gotList = intent.getStringArrayListExtra("returnList");
+            if(gotList != null) {
+                editMadLibText(data);
+            }
+        }
+
+        for (String string : data) {
+            if(string != null) {
+                myMadLib += string;
+            }
+        }
 
         mTextView.setText(myMadLib);
 
@@ -57,16 +65,14 @@ public class MainActivity extends Activity {
         });
     }
 
-    public void handleSentStuff(Intent intent){
-        gotList = intent.getStringArrayListExtra("returnList");
-        if(gotList != null) {
-            editMadLibText();
-        }
-    }
-
-    public void editMadLibText() {
+    public void editMadLibText(String[] input) {
         for(String gotString : gotList) {
-            myMadLib.replaceFirst("BLANK", gotString);
+            for(int i = 0; i < input.length; i++) {
+                if(input[i].contains("BLANK")) {
+                    input[i] = gotString;
+                    break;
+                }
+            }
         }
     }
 
@@ -77,5 +83,5 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-    
+
 }
