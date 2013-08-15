@@ -13,7 +13,7 @@
         android:id="@+id/switchButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SWITCH STRING"
+        android:text="@string/switcher_button_text"
         android:textColor="#FFFFFF"/>
     <TextView
         android:id="@+id/storyText"
