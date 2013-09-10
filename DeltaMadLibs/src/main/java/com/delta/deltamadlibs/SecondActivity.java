@@ -26,8 +26,6 @@ public class SecondActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        // This is bad. Too much duplication. I tried to use an array/loop to make it cleaner, but
-        // I couldn't figure out R.id.editTextX part.
         setupEditText(R.id.editText0);
         setupEditText(R.id.editText1);
         setupEditText(R.id.editText2);
@@ -43,7 +41,6 @@ public class SecondActivity extends Activity {
         mReturnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                addToReturnList();
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 populateReturnList();
                 i.putStringArrayListExtra("returnList", returnList);
@@ -55,32 +52,6 @@ public class SecondActivity extends Activity {
     private static EditText editText;
     private void setupEditText(int id) {
         editText = (EditText)findViewById(id);
-
-//        final String tempString = editText.getText().toString().trim();
-//        editText.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-////                returnList.add(tempString);
-//                try {
-//                    //editText.setText("sdlkfjlsdkjf");
-//                    //editText.append("b");
-//                    returnList.add(editText.getText().toString().trim());
-//                    Log.i("setupEditText", Integer.toString(returnList.size()));
-//                } catch(Exception e){
-//                    e.printStackTrace();
-//                }
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-////                returnList.add(editText.getText());
-//            }
-//        });
     }
 
     public void populateReturnList() {
@@ -95,21 +66,6 @@ public class SecondActivity extends Activity {
         returnList.add(((EditText)findViewById(R.id.editText8)).getText().toString());
         returnList.add(((EditText)findViewById(R.id.editText9)).getText().toString());
     }
-
-//    // NullPointerException occurs here.
-//    private void addToReturnList() {
-//        returnList.add("a " + editText0.getText().toString().trim());
-//        returnList.add("a " + editText1.getText().toString().trim());
-//        returnList.add("a " + editText2.getText().toString().trim());
-//        returnList.add("a " + editText3.getText().toString().trim());
-//        returnList.add("a " + editText4.getText().toString().trim());
-//        returnList.add("a " + editText5.getText().toString().trim());
-//        returnList.add("a " + editText6.getText().toString().trim());
-//        returnList.add("a " + editText7.getText().toString().trim());
-//        returnList.add("a " + editText8.getText().toString().trim());
-//        returnList.add("a " + editText9.getText().toString().trim());
-//        returnList.add("a " + editText10.getText().toString().trim());
-//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
